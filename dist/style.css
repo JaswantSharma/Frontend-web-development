@@ -1,6 +1,9 @@
+
+
 body{
 background: linear-gradient(315deg, #f5d020 0%, #f53803 74%);
 min-height: 200vh;
+
 
 
 }
@@ -27,17 +30,17 @@ min-height: 200vh;
   				inset 0px 15px 5px  rgba(56, 62, 29, 0.78),
           15px 7px 20px 3px rgba(56, 62, 29, 0.78);
 
-  transform-origin: left center;
+  transform-origin:  left center;
   transform:  perspective(7000px) rotateY(20deg)rotateZ(2deg) ;
 }
 
 .container::before{
 	position: relative;
-  content: "";
+  content: " ";
   height: 460px;
   width: 460px;
   background: linear-gradient(#f06060 0%, #a30505 60%, #4d0202 100%);
-  background-image: url('clock.gif');
+  background-image: url('G:/clock web ui/clock.gif');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -78,6 +81,22 @@ min-height: 200vh;
 	
 	border-radius: 50%;
 	position: absolute;
+
+}
+#aa{
+  position: absolute;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  left: 15%;
+}
+#myname{
+  position: absolute;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  bottom: 30%;
+  left:38%;
+
+
 
 }
 
