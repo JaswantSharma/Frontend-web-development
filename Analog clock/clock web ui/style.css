@@ -1,0 +1,123 @@
+body{
+background: linear-gradient(315deg, #f5d020 0%, #f53803 74%);
+height: 100vh;
+
+}
+
+.container{
+  margin: auto;
+  margin-top: 30px;
+  height: 500px;
+  width: 500px;
+  background: linear-gradient(315deg, #f5d020 0%, #f53803 74%); 
+  border-radius: 50%;
+
+  box-shadow:inset 0px -15px 5px  rgba(56, 62, 29, 0.78),
+              inset 0px 15px 5px  rgba(56, 62, 29, 0.78);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: transform .5s ease-in-out;
+
+}
+.container:hover {
+  box-shadow: inset 0px -15px 5px  rgba(56, 62, 29, 0.78),
+  				inset 0px 15px 5px  rgba(56, 62, 29, 0.78),
+          15px 7px 20px 3px rgba(56, 62, 29, 0.78);
+
+  transform-origin:  center;
+  transform:  perspective(7000px) rotateY(20deg)rotateZ(2deg) ;
+}
+
+.container::before{
+	position: relative;
+  content: "";
+  height: 460px;
+  width: 460px;
+  background: linear-gradient(#f06060 0%, #a30505 60%, #4d0202 100%);
+  background-image: url('G:/clock web ui/clock.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+  border-radius: 50%;
+
+  /* filter: blur(18px); */
+}
+/* .container{
+	position: relative;
+	height: 40vw;
+	width: 40vw;
+	margin: auto;
+	background-image: url('G:/clock web ui/clock.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 100%;
+	border-radius: 50%;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ */
+.container::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6  );
+  bottom: -60px;
+  z-index: -1;
+  filter: blur(10px); 
+  }
+  
+
+#hr, #mn, #sec
+{
+	
+	border-radius: 50%;
+	position: absolute;
+
+}
+
+ #hr
+ {
+ 	background-color: red;
+ 	height: 22%;
+    width: 3%;
+    top: 27.69%;
+    left: 48.5%;
+    opacity: 0.8;
+    transform-origin: bottom;
+    
+
+
+ }
+
+ #mn
+ {
+ 	background-color: black;
+ 	height: 34%;
+    width: 1.5%;
+    top: 16%;
+    left: 49.3%;
+    opacity: 0.8;
+    transform-origin: bottom;
+
+ }
+
+#sec
+ {
+ 	background-color: blue;
+ 	height: 38%;
+    width: 0.5%;
+    top: 12%;
+    left: 49.65%;
+    opacity: 0.8;
+    transform-origin: bottom;
+    
+
+ }
+
+
+ 
