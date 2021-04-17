@@ -40,7 +40,7 @@ min-height: 200vh;
   height: 460px;
   width: 460px;
   background: linear-gradient(#f06060 0%, #a30505 60%, #4d0202 100%);
-  background-image: url('G:/clock web ui/clock.gif');
+  background-image: url('clock.gif');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
