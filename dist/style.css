@@ -1,6 +1,8 @@
 body{
 background: linear-gradient(315deg, #f5d020 0%, #f53803 74%);
-height: 100vh;
+min-height: 200vh;
+width: 100%;
+display: flex;
 
 }
 
@@ -26,7 +28,7 @@ height: 100vh;
   				inset 0px 15px 5px  rgba(56, 62, 29, 0.78),
           15px 7px 20px 3px rgba(56, 62, 29, 0.78);
 
-  transform-origin:  center;
+  transform-origin: left center;
   transform:  perspective(7000px) rotateY(20deg)rotateZ(2deg) ;
 }
 
