@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+
+		body{
+			display: flex;
+			justify-content: center;
+			background: linear-gradient(#74ebd5,#acb6e5);
+		}	
+		.box{
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			position: relative;
+			height: 60vh;
+			width: 90%;
+			background: linear-gradient(300deg ,#fff,white);
+			margin-top: 5%;
+			margin-bottom: 15%;
+			position: relative;
+			border-radius: 10%;
+			box-shadow: 0px -15px 15px  rgba(255, 255, 255, 0.05),
+				inset 0px -15px 15px  rgba(255, 255, 255, 0.05),
+						0px 15px 15px  rgba(0, 0,0, 0.3),
+				inset 0px 15px 15px  rgba(0, 0, 0, 0.3);
+		}
+
+		#container{
+			
+			height: 80%;
+			position: relative;
+			display: flex;
+			flex: 1;
+			margin: 5% 5% 5% 5%;
+			
+		}
+
+		.whitenote{
+			height: 100%;
+			background: white;
+			width: 70%;
+			border: 3px solid #fff ;
+			position: relative;
+			border-bottom-left-radius:10%;
+			border-bottom-right-radius:10%;
+			box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.1),
+			0 20px 20px rgba(0, 0, 0, 0.2);
+			flex: 1 0 0 ;
+		}
+
+		.blacknote{
+			position: absolute;
+			background: #091921;
+			border: 2px solid #091921;
+			border-bottom-left-radius:10%;
+			border-bottom-right-radius:10%;
+			box-shadow: inset 0px -6px 6px rgba(2, 6, 7, 0.74),
+              inset 0px -7px 6px  rgba(2, 6, 7, 0.74),
+              inset 10px 16px 6px rgba(255, 255, 255, 0.04),
+              inset 10px 17px 6px  rgba(255, 255, 255, 0.04);
+              
+            height: 65%;
+			width: 55%;
+			z-index: 1;
+			left: 75%;
+			
+		}
+	</style>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.15/Tone.js"></script>
+	<title>Piano</title>
+</head>
+<body>
+	<div class="box">
+		<div id="container"></div>
+	</div>
+	
+	<script>
+		var synth=new Tone.PolySynth().toMaster();
+		var notes=['C','D', 'E' ,'F', 'G' ,'A' , 'B'];
+		var html="";
+		for(var octave=0;octave<2;octave++)
+		{
+			for (var i=0;i<notes.length;i++)
+		{
+			var  note=notes[i];
+			var hasSharp = true;
+			if(note =='E' || note == 'B')
+				hasSharp=false;
+
+			html+=`<div class= "whitenote" onmousedown='noteDown(this,false)' onmouseup='noteup(this,false)'onmouseleave='noteup(this,false)' data-note='${note + (octave+4)}'>`;
+			
+			if(hasSharp)
+			
+			{html+=`<div class= "blacknote" onmousedown='noteDown(this,true)' onmouseup='noteup(this,true)' onmouseleave='noteup(this,true)' data-note='${note + '#' + (octave+4)}'}'></div>`;
+			}
+
+			html+=`</div>`
+		}
+	}
+		document.getElementById('container').innerHTML=html;
+
+		function noteup(el,hasSharp)
+		{
+			el.style.background= hasSharp ? "#091921":"#fff";
+			el.style.boxShadow = hasSharp? "": "inset 0 0 30px rgba(0, 0, 0, 0.1),0 20px 20px rgba(0, 0, 0, 0.2)";
+
+
+		}
+		function noteDown(el,hasSharp){
+				var note=el.dataset.note;
+				el.style.background= hasSharp ? "black":"#ccc";
+				el.style.boxShadow = hasSharp? "": "none";
+				synth.triggerAttackRelease(note,"16n")
+				event.stopPropagation();
+		}
+	</script>
+</body>
+</html>
