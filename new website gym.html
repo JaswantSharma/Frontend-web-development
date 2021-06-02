@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> santosh gym</title>
+		
+		<style type="text/css">
+		html {
+		scroll-behavior: smooth;
+		}
+		body {
+			color: white;
+			height: 100%;
+			background-image: url("try5.jpg");
+			background-color: #000;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: auto 100%;
+			background-position: center top;
+			position: relative;
+		
+			
+		}
+		.sidebar{
+		background-color: white;
+		color: black;
+		height: 50vh;
+		width: 100vw;
+		position: absolute;
+		transform: translateY(-100%);
+		transition: transform 560ms;
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-size: 22px;
+		z-index: 0;
+		
+		}
+		.sidebar > div{
+		padding : 20px;
+		cursor: pointer;
+		transition: transform 140ms;
+		}
+		.sidebar > div:hover{
+		text-decoration: underline;
+		transform: scale(1.2);
+		}
+		.hamburger{
+			position: absolute;
+		cursor: pointer;
+		display:none;/* inline-block */
+		right: 6%;
+		top :4%;
+		}
+		.bar1, .bar2, .bar3 {
+		width: 45px;
+		height: 5px;
+		background-color: white;
+		margin: 6px 0;
+		transition: 0.4s;
+		z-index: 4;
+		}
+		.change .bar1 {
+		-webkit-transform: rotate(-45deg) translate(-9px, 6px);
+		transform: rotate(-45deg) translate(-9px, 6px);
+		background-color: #000;
+		}
+		.change .bar2 {opacity: 0;}
+		.change .bar3 {
+		-webkit-transform: rotate(45deg) translate(-8px, -8px);
+		transform: rotate(45deg) translate(-8px, -8px);
+		background-color: #000;
+		}
+		.sidebar.active{
+		transform: translateY(129px);
+		}
+		.page{
+			background: #444141;
+			box-shadow: 0px 10px 6px 2px rgb(183 176 176 / 83%);
+			display: none;
+			justify-content: space-between;
+			align-content: center;
+			align-items: center;
+			width: 100vw;
+			margin-top: -2%;
+			z-index: 3;
+		}
+		
+		header{
+			justify-content: space-around;
+			align-content: center;
+			align-items: center;
+			width: 100%;
+		}
+		header{
+			display: flex;
+		}
+		.left {
+			
+			padding: 17px;
+			padding-right: 4px;
+			padding-left: 23px;
+		}
+		.mid {
+			box-sizing: border-box;
+			text-align: center;
+		}
+		.right {
+			top: 7px;
+		padding: 17px;
+		padding-right: 4px;
+		width: 20%;
+		white-space: nowrap;
+		}
+		.nb {
+			display: inline-flex;
+			list-style: none;
+			color: white;
+		}
+		.nb li {
+			font-size: 23px;
+			text-decoration-color: white;
+			color: white;
+			white-space: nowrap;
+		}
+		.nb li a {
+			text-decoration: none;
+			padding: 25px;
+			color: white;
+		}
+		.nb li a:hover,
+		.nb li a:active {
+			text-decoration: underline;
+			color: black;
+		}
+		.left div {
+			text-align: center;
+		}
+		.btn {
+			margin: 0px 9px;
+			background-color: black;
+			color: white;
+			padding: 16px 2px;
+			border: 2px solid grey;
+			font-size: 15px;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+		.btn:hover {
+			background-color: grey;
+		}
+		.container {
+			display: flex;
+			justify-content: flex-start;
+			align-content: center;
+			border: 2px solid #fdf7f8;
+			flex-direction: column;
+			margin: 10% 1%;
+			margin: 10% 21% 8% 17%;
+			border-radius: 20px;
+		}
+		.container h2 {
+			align-self: center;
+			padding: 10px;
+			
+		}
+		.formgrp input {
+			text-align: center;
+			display: block;
+			width: 80%;
+			padding: 10px;
+			border: 2px solid black;
+			margin: 13px auto;
+			font-family: cursive;
+			font-size: 16px;
+		}
+		.container button {
+			display: block;
+			padding: 10px;
+			text-align: center;
+			width: 80%;
+			margin: 13px auto;
+		}
+		.left img {
+			width: 80px;
+		}
+		.join{
+			display: flex;
+		top: 20%;
+		justify-content: center;
+		align-content: center;
+		margin-top: 30%;
+		}
+		.book{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		margin-top: 40%;
+		height: 60px;
+		background-image: linear-gradient(to top, #D8D9DB 0%, #fff 60%, #FDFDFD 100%);
+		border-radius: 30px;
+		border: 1px solid #8F9092;
+		box-shadow: inset 0 0 3px 0 #CECFD1;
+		transition: all 0.2s ease;
+		font-size: 100%;
+		font-weight: 600;
+		color: black;
+		transition: transform 0.2s ease;
+		white-space: nowrap;
+		}
+		.book:hover:not([disabled]) {
+		transform: scale(0.975);
+		}
+		.book:focus:not(:active) {
+		-webkit-animation: active 0.9s alternate infinite;
+		animation: active 0.9s alternate infinite;
+		outline: none;
+		}
+		.book:active:not([disabled]) {
+		transform: scale(0.95);}
+		a{
+			text-decoration: none;
+		}
+		#male,#female{
+			display: inline;
+			width: 20px;
+			margin: 0% 5% 0% 19%;
+		}
+		@media screen and (max-width: 700px){
+			header{
+				display: none;
+			}
+			.mid,.right{
+				display: none;
+			}
+			.sidebar{
+				display: flex;
+				transform: translateY(-200%);
+			}
+			.page{
+				display: flex;
+			}
+			.hamburger{
+				display: inline-block;
+			}
+			.left{
+				align-self: flex-start;
+				left: 5%;
+			}
+			.left div{
+				text-align: left;
+			}
+		}
+		@media  screen and (max-width: 500px) {
+			#male, #female {
+		display: inline;
+		width: 20px;
+		margin: 0% 5% 0% 14%;
+		}
+		
+		}
+
+		@media  screen and (max-width: 425px) {
+			.container h2 {
+			font-size: 18px;
+    		padding: 10px;
+			
+		}
+			#male, #female {
+		display: inline;
+		width: 20px;
+		margin: 0% 16% 0% 21%;
+		}
+		.container{
+			width: 70%;
+			}
+		}
+		</style>
+		<script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/87ac547a4677d96c140d4d550/f65224f34539a6164055da547.js");</script>
+	
+		
+	</head>
+	
+	<body>
+		<header class ='header'>
+			<!-- Left box for logo -->
+			<div class ='left'>
+				<div><img src="/bg2.jpg">
+				</div>
+				
+				
+				<div>santosh fitness</div>
+				
+			</div>
+			<!-- mid box for logo	 -->
+			<div class ='mid'>
+				<ul class='nb'>
+					<li><a href="#" class='active'>Home </a></li>
+					<li><a href="#">about us </a></li>
+					<li><a href="#">fitness centre</a> </li>
+					<li><a href="#">contact us </a></li>
+					
+				</ul>
+				
+			</div>
+			<!-- right box for logo -->
+			<div class ='right'>
+				<button class="btn">Call us now</button>
+				<button class="btn">Email us</button>
+			</div>
+			
+		</header>
+		<div class="sidebar">
+			<div>HOME</div>
+			<div>ABOUT US</div>
+			<div>FITNESS CENTER</div>
+			<div>CONTACT US</div>
+		</div>
+		
+		<div class="page">
+			<div class ='left'>
+				<div><img src="/bg2.jpg">
+				</div>
+				<div>santosh fitness</div>
+				
+			</div>
+			<div class="hamburger" onclick="myFunction(this); toggle();" >
+				
+				<div class="bar1"></div>
+				<div class="bar2"></div>
+				<div class="bar3"></div>
+			</div>
+		</div>
+		
+		<center>
+		<section class="join"><a href="javascript:setTimeout(()=>{window.location = '#container' },500);"><button class="book">BECOME A MEMBER NOW</button></a>
+	</section>
+	</center>
+	<hr style="margin:35% 0% 0% 10%; width:80%;">
+	<div class="container" id="container">
+		<h2>Join worldclass santosh gym</h2>
+		<form action ="/" method="post"><!-- ye backend ki file hai pyhton ki lga do jaha pe code likha bhai aahahaha mja kro -->
+		<div class ="formgrp">
+			<input type="text" name="name" placeholder="Enter your Name">
+		</div>
+		<div class ="formgrp">
+			<input type="text" name="age" placeholder="Enter your Age">
+			
+		</div>
+		<div class ="formgrp">
+			<input type="radio" id="male" name="gender" value="male">Male
+			<input type="radio" id="female" name="gender" value="female">Female
+			
+		</div>
+		<div class ="formgrp">
+			<input type="email" name="email" placeholder="Enter your mail address">
+			
+		</div>
+		<div class ="formgrp">
+			<input type="text" name="locality" placeholder="Enter your Locality">
+			
+		</div>
+		<div class="formgrp">
+			<button class="btn" type="submit">Submit</button>
+		</div>
+		
+	</form>
+</div>
+<script>
+function myFunction(x) {
+x.classList.toggle("change");
+var book=document.querySelector(".book");
+if(book.style.visibility==="hidden"){
+	book.style.visibility="visible";
+		}
+else{
+	book.style.visibility="hidden";
+}		
+}
+function toggle(){
+	const sidebar=document.querySelector(".sidebar");
+	
+	const main=document.querySelector(".main");
+	sidebar.classList.toggle("active");
+}
+const sidebarh=document.querySelector(".sidebar").style.height;
+const pageh=document.querySelector(".page").style.height;
+document.querySelector(".sidebar").style.height=page;
+</script>
+</body>
+</html>
